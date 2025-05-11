@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AstroStake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RH9S9HCJ4X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RH9S9HCJ4X');
+  </script>
+</head>
+<header class="navbar">
+    <div class="navbar-left">
+        <img src="https://vault.astrostake.xyz/logo/AstroStake_white.png" alt="AstroStake Logo" class="navbar-logo">
+    </div>
+    <nav class="navbar-menu">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="https://docs.astrostake.xyz">Docs</a>
+        <a href="/#contact">Contact</a>
+    </nav>
+</header>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const splashScreen = document.getElementById("splash-screen");
+    const splashSeen = localStorage.getItem("splashSeen");
+
+    if (splashSeen === "true") {
+      splashScreen.style.display = "none";
+    } else {
+      setTimeout(() => {
+        splashScreen.classList.add("hide-splash");
+        localStorage.setItem("splashSeen", "true");
+      }, 3000); // Splash screen muncul selama 3 detik (ubah sesuai kebutuhan)
+    }
+  });
+</script>
+<body>
+
+<!-- Splash Screen -->
+<div class="splash" id="splash-screen">
+  <div id="meteors"></div>
+  <div class="typing" id="typing-text"></div>
+  <div class="sub-text" id="sub-text">Powered by Maouam's Node Lab</div>
+</div>
+  
+<!-- Hero Section -->
+<section class="hero">
+  <img src="logo.png" alt="AstroStake Logo" />
+  <p class="hero-description">
+    From one-click installs to full validator support, AstroStake has your back.<br>
+    We help secure networks, support the ecosystem, and grow together with our community.
+  </p>
+  <div class="hero-buttons">
+    <a href="https://maouam.nodelab.my.id/" target="_blank">Join Community</a>
+    <a href="https://docs.astrostake.xyz" target="_blank">Docs</a>
+  </div>
+    <button class="scroll-btn" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">
+    AstroStake Service
+  </button>
+</section>
+
+
+<!-- Services Section -->
+<section id="services">
+    <h2 style="text-align:center; font-size:2em; margin-bottom:10px;">Our Services</h2>
+    <p style="text-align:center; color:#bbb; max-width:800px; margin:0 auto 40px; font-size:1rem;">
+      Discover the blockchain projects we're supporting. From validator staking to RPC endpoints and faucet tools,
+      AstroStake is committed to providing you with streamlined access and reliable infrastructure across multiple ecosystems.
+    </p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-header">
+        <img src="https://docs.astrostake.xyz/logos/0g.png" alt="OG Labs">
+        <span class="service-name no-box">OG Labs</span>
+      </div>
+      <div class="service-links">
+        <a href="https://docs.astrostake.xyz/0g-labs/" class="service-btn">Guide</a>
+        <a href="https://0g.exploreme.pro/validators/0gvaloper1aax7fz4d904m0ul3e9v3lfq7cdzzw3ka8qk3mr?action=Delegate" class="service-btn">Stake</a>
+        <a href="https://astrostake.xyz/0g-status" class="service-btn">RPC</a>
+        <a href="https://astrostake.xyz/0g-faucet" class="service-btn">Faucet</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-header">
+        <img src="https://docs.astrostake.xyz/logos/drosera.png" alt="Drosera">
+        <span class="service-name no-box">Drosera</span>
+      </div>
+      <div class="service-links">
+        <a href="https://docs.astrostake.xyz/drosera/" class="service-btn">Guide</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-header">
+        <img src="https://docs.astrostake.xyz/logos/dill.png" alt="Dill">
+        <span class="service-name no-box">Dill</span>
+      </div>
+      <div class="service-links">
+        <a href="https://staker.dill.xyz/management/detail?address=0x5F15AcdeD2FF4E8d40820E3a1d2fb56106E487cf" class="service-btn">Stake</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-header">
+        <img src="https://docs.astrostake.xyz/logos/vana.png" alt="VANA">
+        <span class="service-name no-box">VANA</span>
+      </div>
+      <div class="service-links">
+        <a href="https://docs.astrostake.xyz/" class="service-btn">Guide</a>
+      </div>
+    </div>
+  </div>
+  <div style="height: 100px;"></div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" style="padding: 80px 20px; text-align: center;">
+  <h2>Contact Us</h2>
+  <p>Reach us through social platforms or send a message directly to our Discord.</p>
+
+  <!-- Social Links -->
+  <div class="hero-buttons" style="margin: 20px 0;">
+    <a href="https://x.com/astrostake" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
+      X/Twitter
+    </a>
+    <a href="https://t.me/AstroStake" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
+      Telegram
+    </a>
+    <a href="https://discord.gg/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
+      Discord
+    </a>
+    <a href="mailto:contact@astrostake.xyz">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" alt="Email" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
+      Email
+    </a>
+  </div>
+
+
+
+  <!-- Message Form -->
+  <div style="max-width: 400px; margin: 30px auto;">
+    <input id="custom-name" type="text" placeholder="Your Name or Social Media @username" style="
+      width: 100%; padding: 12px; margin-bottom: 10px;
+      border-radius: 8px; border: none;
+      background-color: #111; color: white; font-size: 1em;
+    "/>
+
+    <textarea id="custom-message" placeholder="Type your message here..." style="
+      width: 100%; height: 120px; padding: 12px;
+      border-radius: 8px; border: none; resize: vertical;
+      background-color: #111; color: white; font-size: 1em;
+    "></textarea>
+
+    <button class="send-message-btn" onclick="sendCustomMessage()">
+      🚀 Send Message
+    </button>
+  </div>
+
+</section>
+
+
+<script>
+  const text = "🛰️ Welcome to AstroStake";
+  let i = 0;
+  const speed = 80;
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      document.getElementById("sub-text").style.opacity = 1;
+      setTimeout(() => {
+        document.getElementById("splash-screen").classList.add('hide-splash');
+      }, 2000);
+    }
+  }
+
+  window.onload = function () {
+    typeWriter();
+    for (let j = 0; j < 20; j++) {
+      const meteor = document.createElement('div');
+      meteor.classList.add('meteor');
+      meteor.style.left = Math.random() * 100 + 'vw';
+      meteor.style.top = Math.random() * -200 + 'px';
+      meteor.style.animationDelay = (Math.random() * 5) + 's';
+      meteor.style.animationDuration = (2 + Math.random() * 2) + 's';
+      document.getElementById("meteors").appendChild(meteor);
+    }
+  }
+</script>
+
+<!-- Webhook Script -->
+<script>
+  function sendCustomMessage() {
+    const name = document.getElementById("custom-name").value || "Anonymous";
+    const message = document.getElementById("custom-message").value;
+    if (!message.trim()) {
+      alert("Message cannot be empty!");
+      return;
+    }
+
+    fetch('https://api64.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        fetch('/sendMessage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            message: message,
+            ip: data.ip
+          })
+        })
+        .then(response => response.json())
+        .then(result => alert("Message sent successfully!"))
+        .catch(error => console.error('Error sending message:', error));
+      })
+      .catch(error => console.error('Error fetching IP:', error));
+  }
+</script>
+
+</body>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="https://vault.astrostake.xyz/logo/AstroStake_white.png" alt="AstroStake Logo" class="footer-logo">
+        </div>
+        <div class="footer-right">
+            <div class="footer-navigation">
+                <h4>Navigation</h4>
+                <a href="https://astrostake.xyz/#services">Services</a>
+                <a href="https://docs.astrostake.xyz/">Guides</a>
+                <a href="https://astrostake.xyz/brandkit">Brand Kit</a>
+                <a href="https://astrostake.xyz/#contact">Contact Us</a>
+            </div>
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <a href="https://astrostake.xyz/terms-of-use">Terms of Use</a>
+                <a href="https://astrostake.xyz/privacy-policy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 AstroStake. All rights reserved.</p>
+    </div>
+</footer>
+
+</html>

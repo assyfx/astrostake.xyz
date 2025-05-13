@@ -1,0 +1,317 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(180deg, #000000 0%, #0a0a2a 100%);
+  color: white;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 40px 0;
+  min-height: 70vh;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 200px 200px, 400px 400px, 300px 300px, 500px 500px, 600px 600px;
+  background-position: 0 0, 50px 100px, 100px 50px, 150px 150px, 200px 0;
+  z-index: -1;
+  opacity: 0.2;
+  animation: starsMove 80s linear infinite;
+}
+
+@keyframes starsMove {
+  0% {
+    background-position: 0 0, 50px 100px, 100px 50px, 150px 150px, 200px 0;
+  }
+  100% {
+    background-position: 0 1000px, 50px 1100px, 100px 1050px, 150px 1150px, 200px 1000px;
+  }
+}
+.brand-kit-container {
+    background: #080b14;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.brand-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.brand-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+.download-btn {
+  background: linear-gradient(90deg, #0c056d, #5c1aff);
+  box-shadow: 0 0 15px rgba(92, 26, 255, 0.4);
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #1a0a88, #7745ff);
+  box-shadow: 0 0 20px rgba(92, 26, 255, 0.6);
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: #3a3d46;
+    margin: 20px 0;
+}
+
+.nomenclature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #e0e0e0;
+}
+
+.nomenclature-description {
+    font-size: 0.95rem;
+    color: #cccccc;
+    margin-bottom: 16px;
+}
+
+.nomenclature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.correct,
+.incorrect {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 128, 0, 0.15);
+    padding: 12px;
+    border-radius: 8px;
+    gap: 8px;
+}
+
+.correct {
+    background: rgba(0, 128, 0, 0.15);
+    color: #66ffb2;
+}
+
+.incorrect {
+    background: rgba(128, 0, 0, 0.15);
+    color: #ff6b6b;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+.footer {
+    background: #080b14;
+    padding: 40px 20px;
+    color: #e0e0e0;
+}
+
+.footer-container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    flex-wrap: wrap; /* Membuat konten turun ke bawah jika tidak muat */
+}
+
+.footer-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 40px;
+}
+
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    flex-wrap: wrap; /* Menyesuaikan konten ke bawah jika sempit */
+}
+
+.footer-navigation,
+.footer-legal {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.footer-navigation h4,
+.footer-legal h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.footer-navigation a,
+.footer-legal a {
+    color: #a0c4ff;
+    text-decoration: none;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.footer-navigation a:hover,
+.footer-legal a:hover {
+    color: #4fa1ff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: #888;
+}
+
+/* 🔧 Media Query untuk Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .footer-left {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .footer-right {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .footer-navigation,
+    .footer-legal {
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .footer-navigation h4,
+    .footer-legal h4 {
+        margin-bottom: 4px;
+        font-size: 1rem;
+    }
+
+    .footer-logo {
+        height: 35px;
+    }
+}
+
+/* Navbar Utama */
+.navbar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: relative;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 40px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+    color: #4fa1ff;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Membuat navbar tetap horizontal */
+        justify-content: center; /* Menjaga menu tetap di tengah */
+        padding: 10px 20px;
+    }
+
+    .navbar-left {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .navbar-logo {
+        height: 35px; /* Ukuran lebih kecil pada mobile */
+        margin-right: 10px;
+    }
+
+    .navbar-menu {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: nowrap; /* Memastikan tidak turun ke bawah */
+    }
+
+    .navbar-menu a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}

@@ -317,7 +317,7 @@
     fetch('https://api64.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
-        fetch('/sendMessage', {
+        fetch('https://api.astrostake.xyz/sendMessage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -2,11 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AstroStake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Meta Tags untuk SEO -->
+  <title>AstroStake - One-Click Command, RPC Monitoring, Blockchain Nodes Guides, Snapshots & Community</title>
+  <meta name="description" content="AstroStake provides one-click command setup, real-time RPC monitoring, blockchain nodes guides, blockchain snapshots, and a vibrant community. Secure networks with ease.">
+  <meta name="keywords" content="AstroStake, Blockchain Monitoring, RPC Monitoring, One-Click Command, Blockchain Nodes Guides, Community, Blockchain Snapshots, Secure Blockchain, Web3 Infrastructure">
+  <meta name="author" content="AstroStake">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags (SEO Sosial Media) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AstroStake - One-Click Command, RPC Monitoring, Blockchain Guides, Snapshots & Community" />
+  <meta property="og:description" content="AstroStake provides one-click command setup, real-time RPC monitoring, blockchain guides, blockchain snapshots, and a vibrant community. Secure networks with ease." />
+  <meta property="og:image" content="https://astrostake.xyz/logo.png" />
+  <meta property="og:image:alt" content="AstroStake Logo - Blockchain Node Monitoring" />
+  <meta property="og:url" content="https://astrostake.xyz" />
+
+  <!-- Twitter Cards Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AstroStake - One-Click Command, RPC Monitoring, Blockchain Guides, Snapshots & Community" />
+  <meta name="twitter:description" content="AstroStake provides one-click command setup, real-time RPC monitoring, blockchain guides, blockchain snapshots, and a vibrant community. Secure networks with ease." />
+  <meta name="twitter:image" content="https://astrostake.xyz/logo.png" />
+  <meta name="twitter:image:alt" content="AstroStake Logo - Blockchain Node Monitoring" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AstroStake",
+    "url": "https://astrostake.xyz",
+    "description": "AstroStake provides one-click command setup, real-time RPC monitoring, blockchain nodes guides, blockchain nodes snapshots, and a vibrant community. Secure networks with ease.",
+    "creator": {
+      "@type": "Organization",
+      "name": "AstroStake",
+      "url": "https://astrostake.xyz",
+      "logo": "https://astrostake.xyz/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "contact@astrostake.xyz",
+        "url": "https://astrostake.xyz/#contact"
+      },
+      "sameAs": [
+        "https://x.com/astrostake",
+        "https://t.me/AstroStake",
+        "https://discord.com/users/248382810631438337",
+        "https://github.com/assyfx"
+      ]
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://astrostake.xyz"
+    },
+    "potentialAction": [
+      {
+        "@type": "SearchAction",
+        "target": "https://astrostake.xyz/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      {
+        "@type": "Service",
+        "name": "One-Click Command",
+        "description": "Easily deploy and manage blockchain nodes with one-click command solutions.",
+        "url": "https://docs.astrostake.xyz"
+      },
+      {
+        "@type": "Service",
+        "name": "RPC Monitoring",
+        "description": "Real-time RPC status monitoring for 0G Network and other supported networks.",
+        "url": "https://astrostake.xyz/0g-status"
+      },
+      {
+        "@type": "Service",
+        "name": "Blockchain Guides",
+        "description": "Comprehensive blockchain guides to help you understand and use blockchain technology.",
+        "url": "https://docs.astrostake.xyz"
+      },
+      {
+        "@type": "Service",
+        "name": "Blockchain Snapshots",
+        "description": "Fast and secure blockchain snapshots for 0G Network and other supported blockchains.",
+        "url": "https://vault.astrostake.xyz/"
+      },
+      {
+        "@type": "Community",
+        "name": "AstroStake Community",
+        "description": "Join our vibrant community of blockchain enthusiasts and secure networks together.",
+        "url": "https://maouam.nodelab.my.id/",
+        "sameAs": [
+          "https://x.com/astrostake",
+          "https://t.me/AstroStake",
+          "https://discord.com/users/248382810631438337"
+        ]
+      }
+    ]
+  }
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RH9S9HCJ4X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -49,7 +145,7 @@
   <div class="typing" id="typing-text"></div>
   <div class="sub-text" id="sub-text">Powered by Maouam's Node Lab</div>
 </div>
-  
+
 <!-- Hero Section -->
 <section class="hero">
   <img src="logo.png" alt="AstroStake Logo" />
@@ -83,8 +179,17 @@
       <div class="service-links">
         <a href="https://docs.astrostake.xyz/0g-labs/" class="service-btn">Guide</a>
         <a href="https://0g.exploreme.pro/validators/0gvaloper1aax7fz4d904m0ul3e9v3lfq7cdzzw3ka8qk3mr?action=Delegate" class="service-btn">Stake</a>
-        <a href="https://astrostake.xyz/0g-status" class="service-btn">RPC</a>
-        <a href="https://astrostake.xyz/0g-faucet" class="service-btn">Faucet</a>
+        <a href="/0g-status" class="service-btn">RPC</a>
+        <a href="/0g-faucet" class="service-btn">Faucet</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-header">
+        <img src="https://docs.astrostake.xyz/logos/aztec.png" alt="Aztec">
+        <span class="service-name no-box">Aztec</span>
+      </div>
+      <div class="service-links">
+        <a href="https://docs.astrostake.xyz/aztec/" class="service-btn">Guide</a>
       </div>
     </div>
     <div class="service-card">
@@ -133,7 +238,7 @@
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
       Telegram
     </a>
-    <a href="https://discord.gg/" target="_blank">
+    <a href="https://discord.com/users/248382810631438337" target="_blank">
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(1);">
       Discord
     </a>
@@ -147,7 +252,7 @@
 
   <!-- Message Form -->
   <div style="max-width: 400px; margin: 30px auto;">
-    <input id="custom-name" type="text" placeholder="Your Name or Social Media @username" style="
+    <input id="custom-name" type="text" placeholder="Your Name or Social Media @username or email" style="
       width: 100%; padding: 12px; margin-bottom: 10px;
       border-radius: 8px; border: none;
       background-color: #111; color: white; font-size: 1em;
@@ -240,7 +345,7 @@
                 <h4>Navigation</h4>
                 <a href="https://astrostake.xyz/#services">Services</a>
                 <a href="https://docs.astrostake.xyz/">Guides</a>
-                <a href="https://astrostake.xyz/brandkit">Brand Kit</a>
+                <a href="https://astrostake.xyz/brand-kit">Brand Kit</a>
                 <a href="https://astrostake.xyz/#contact">Contact Us</a>
             </div>
             <div class="footer-legal">
@@ -254,5 +359,4 @@
         <p>© 2025 AstroStake. All rights reserved.</p>
     </div>
 </footer>
-
 </html>

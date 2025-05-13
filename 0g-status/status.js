@@ -52,7 +52,7 @@ async function updateStatusFromBackend() {
   try {
     console.log("Starting Fetch from Backend...");
 
-    const res = await fetch("https://backend.astrostake.xyz/last-blocks", {
+    const res = await fetch("https://api.astrostake.xyz/last-blocks", {
       method: "GET",
       headers: {
         "Cache-Control": "no-cache, no-store, must-revalidate",

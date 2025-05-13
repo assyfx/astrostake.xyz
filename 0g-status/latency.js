@@ -19,17 +19,12 @@ function initLatencyChart() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    suggestedMax: function(context) {
-                        const maxValue = Math.max(...context.chart.data.datasets[0].data);
-                        return maxValue > 2000 ? maxValue + 500 : 2000;
-                    },
-					},
-					        title: {
-					            display: true,
-					            text: 'Latency (ms)'
-					        }
-					    },
-					},
+                    suggestedMax: 200, // Batas maksimal sumbu Y di set secara paksa
+                    title: {
+                        display: true,
+                        text: 'Latency (ms)'
+                    }
+                },
                 x: {
                     title: {
                         display: true,
@@ -62,11 +57,10 @@ function initLatencyChart() {
     setInterval(fetchLatencyFromBackend, 3000);
 }
 
-
 // Fungsi untuk Fetch Latency dari Backend
 async function fetchLatencyFromBackend() {
     try {
-        const response = await fetch("https://astrostake.xyz/last-blocks", {
+        const response = await fetch("https://backend.astrostake.xyz/last-blocks", {
             method: "GET",
             headers: {
                 "Cache-Control": "no-cache"

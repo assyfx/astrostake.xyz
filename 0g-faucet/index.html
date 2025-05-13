@@ -15,72 +15,15 @@
   <title>AstroStake Faucet</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/0g-faucet/maintenance.css">
 </head>
 <body>
-  <div id="meteors"></div>
   <div class="container">
-    <h1>🚀 AstroStake Testnet Faucet</h1>
-    <p>Enter your wallet address to receive <strong>0.5 A0GI</strong> (Chain ID 16600)</p>
-    <input type="text" id="address" placeholder="0x...">
-    <div class="g-recaptcha" data-sitekey="6LeYix4rAAAAANssITT0TW0zN6k565g00-tOihPP" data-theme="dark"></div>
-    <button onclick="requestFaucet()">Request Faucet</button>
-    <p id="status" class="status"></p>
-    <div class="links">
-      <a href="https://0g.exploreme.pro/validators/0gvaloper1aax7fz4d904m0ul3e9v3lfq7cdzzw3ka8qk3mr?action=Delegate" target="_blank">🛰️ Stake Now</a>
-      <a href="https://docs.astrostake.xyz" target="_blank">📘 Open Guide</a>
-    </div>
+    <h1>🚧 Faucet Under Maintenance</h1>
+    <p>We're currently upgrading the chain to <strong>v3</strong>.<br>
+    The faucet will be back online shortly.</p>
+    <p class="small">Stay updated via <a href="https://t.me/astrostake" target="_blank">Telegram</a> or <a href="https://twitter.com/astrostake" target="_blank">Twitter</a>.</p>
+    <p class="small">Go to official <a href="https://faucet.0g.ai" target"_blank">faucet website</a>.</p>
   </div>
-
-  <script>
-    async function requestFaucet() {
-      const address = document.getElementById('address').value;
-      const token = grecaptcha.getResponse();
-      const status = document.getElementById('status');
-      status.className = 'status';
-
-      if (!token) {
-        status.innerText = '❌ Please complete the captcha.';
-        status.classList.add('error');
-        return;
-      }
-
-      status.innerText = '⏳ Sending...';
-
-      try {
-        const res = await fetch('/api/faucet', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ address, token })
-        });
-        const data = await res.json();
-        if (res.ok) {
-          status.innerText = `✅ TX sent!\nTX: ${data.tx}`;
-          status.classList.add('success');
-        } else {
-          status.innerText = `❌ ${data.message}`;
-          status.classList.add('error');
-        }
-      } catch (err) {
-        status.innerText = '❌ Request failed.';
-        status.classList.add('error');
-      }
-    }
-
-    window.onload = function () {
-      for (let i = 0; i < 20; i++) {
-        const meteor = document.createElement('div');
-        meteor.classList.add('meteor');
-        meteor.style.left = Math.random() * 100 + 'vw';
-        meteor.style.top = Math.random() * -200 + 'px';
-        meteor.style.animationDelay = (Math.random() * 5) + 's';
-        meteor.style.animationDuration = (2 + Math.random() * 2) + 's';
-        document.getElementById("meteors").appendChild(meteor);
-      }
-    }
-  </script>
 </body>
-<footer style="margin-top: 2rem; font-size: 0.85rem; color: #888; text-align: center;">
-  Served by <strong>AstroStake</strong> 🚀
-</footer>
 </html>

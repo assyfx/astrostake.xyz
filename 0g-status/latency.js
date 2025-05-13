@@ -60,7 +60,7 @@ function initLatencyChart() {
 // Fungsi untuk Fetch Latency dari Backend
 async function fetchLatencyFromBackend() {
     try {
-        const response = await fetch("https://backend.astrostake.xyz/last-blocks", {
+        const response = await fetch("https://api.astrostake.xyz/last-blocks", {
             method: "GET",
             headers: {
                 "Cache-Control": "no-cache"

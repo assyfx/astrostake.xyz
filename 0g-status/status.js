@@ -229,11 +229,25 @@ function initBlockChart() {
 
 function updateBlockChart() {
   const cards = Array.from(document.querySelectorAll('.status-card'));
-  const labels = cards.map(card => card.querySelector('.status-title').textContent);
-  const data = cards.map(card => {
-    const txt = card.querySelector('.status-block').textContent;
-    const m = txt.match(/Latest Block:\s*([\d,]+)/);
-    return m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
+  const labels = [];
+  const data = [];
+  const colors = [];
+
+  // Filter hanya untuk Chain ID 16601
+  cards.forEach(card => {
+    const chainText = card.querySelector('.status-chain').textContent;
+    if (chainText.includes("16601")) {
+      const title = card.querySelector('.status-title').textContent;
+      const txt = card.querySelector('.status-block').textContent;
+      const m = txt.match(/Latest Block:\s*([\d,]+)/);
+      const blockNumber = m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
+
+      if (blockNumber > 0) {
+        labels.push(title);
+        data.push(blockNumber);
+        colors.push('#4d61ff');
+      }
+    }
   });
 
   const validData = data.filter(b => b > 0);
@@ -270,11 +284,21 @@ function sortCardsByBlock() {
   const cards = Array.from(container.querySelectorAll(".status-card"));
   const positions = new Map(cards.map(c => [c, c.getBoundingClientRect()]));
 
-  const sorted = cards.sort((a,b) => {
-    const aB = parseInt(a.querySelector(".status-block").dataset.block||"0",10);
-    const bB = parseInt(b.querySelector(".status-block").dataset.block||"0",10);
+  // Sorting Berdasarkan Chain ID 16601 terlebih dahulu, lalu Latest Block
+  const sorted = cards.sort((a, b) => {
+    const aChain = a.querySelector(".status-chain").textContent.includes("16601") ? 1 : 0;
+    const bChain = b.querySelector(".status-chain").textContent.includes("16601") ? 1 : 0;
+
+    // Prioritaskan Chain ID 16601
+    if (aChain > bChain) return -1;
+    if (aChain < bChain) return 1;
+
+    // Jika sama-sama 16601, urutkan berdasarkan Latest Block
+    const aB = parseInt(a.querySelector(".status-block").dataset.block || "0", 10);
+    const bB = parseInt(b.querySelector(".status-block").dataset.block || "0", 10);
     return bB - aB;
   });
+  
   sorted.forEach(c => container.appendChild(c));
 
   sorted.forEach(c => {

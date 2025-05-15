@@ -515,5 +515,38 @@ body {
         height: 35px;
     }
 }
+/* Hero Section Enhanced Style */
+.hero h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
 
+.social-proof {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-proof .stat {
+  text-align: center;
+}
+
+.social-proof .stat h3 {
+  font-size: 2rem;
+  color: #4fa1ff;
+  margin-bottom: 5px;
+}
+
+.social-proof .stat p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.stat h3:hover {
+  transform: scale(1.05);
+  color: #4fa1ff;
+  transition: transform 0.3s, color 0.3s;
+}
 

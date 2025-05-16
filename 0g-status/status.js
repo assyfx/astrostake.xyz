@@ -7,6 +7,8 @@ const RPCS = [
   { name: "CoreNode Community", url: "https://0g-galileo-evmrpc.corenodehq.xyz/", active: true, official: false },
   { name: "Cryptomolot", url: "https://0g.json-rpc.cryptomolot.com/", active: true, official: false },
   { name: "Maouam Nodelab", url: "https://0g-evm.maouam.nodelab.my.id/", active: true, official: false },
+  { name: "CoinssporNodeCenter", url: "https://0g-evmrpc-galileo.coinsspor.com/", active: true, official: false },
+  { name: "Komado", url: "https://0g-evmrpc-galileo.komado.xyz/", active: true, official: false },
   { name: "Official RPC - 0G", url: "https://evmrpc-testnet.0g.ai", active: true, official: true }
 ];
 

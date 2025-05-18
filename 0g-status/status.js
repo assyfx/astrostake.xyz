@@ -13,7 +13,7 @@ const RPCS = [
   { name: "zskw", url: "https://0g.galileo.zskw.xyz/", active: true, official: false },
   { name: "shachopra", url: "https://0g-galileo.shachopra.com/", active: true, official: false },
   { name: "CoreNode Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/", active: true, official: false },
-
+  { name: "Zeycanode", url: "https://0g-galileo-evm-rpc.zeycanode.com/", active: true, official: false }
 ];
 
 function formatNumber(num) {

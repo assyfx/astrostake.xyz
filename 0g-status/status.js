@@ -1,4 +1,5 @@
 const RPCS = [
+  { name: "Official RPC - 0G", url: "https://evmrpc-testnet.0g.ai", active: true, official: true },
   { name: "AstroStake", url: "https://0g-testnet-rpc.astrostake.xyz", active: true, official: false },
   { name: "BANGCODE", url: "https://0g.bangcode.id", active: true, official: false },
   { name: "Grand Valley", url: "https://lightnode-json-rpc-0g.grandvalleys.com", active: true, official: false },
@@ -9,7 +10,9 @@ const RPCS = [
   { name: "Maouam Nodelab", url: "https://0g-evm.maouam.nodelab.my.id/", active: true, official: false },
   { name: "CoinssporNodeCenter", url: "https://0g-evmrpc-galileo.coinsspor.com/", active: true, official: false },
   { name: "Komado", url: "https://0g-evmrpc-galileo.komado.xyz/", active: true, official: false },
-  { name: "Official RPC - 0G", url: "https://evmrpc-testnet.0g.ai", active: true, official: true }
+  { name: "zskw", url: "https://0g.galileo.zskw.xyz/" },
+  { name: "shachopra", url: "https://0g-galileo.shachopra.com/" },
+  { name: "CoreNoce Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/" }
 ];
 
 function formatNumber(num) {

@@ -10,9 +10,10 @@ const RPCS = [
   { name: "Maouam Nodelab", url: "https://0g-evm.maouam.nodelab.my.id/", active: true, official: false },
   { name: "CoinssporNodeCenter", url: "https://0g-evmrpc-galileo.coinsspor.com/", active: true, official: false },
   { name: "Komado", url: "https://0g-evmrpc-galileo.komado.xyz/", active: true, official: false },
-  { name: "zskw", url: "https://0g.galileo.zskw.xyz/" },
-  { name: "shachopra", url: "https://0g-galileo.shachopra.com/" },
-  { name: "CoreNode Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/" }
+  { name: "zskw", url: "https://0g.galileo.zskw.xyz/", active: true, official: false },
+  { name: "shachopra", url: "https://0g-galileo.shachopra.com/", active: true, official: false },
+  { name: "CoreNode Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/", active: true, official: false },
+
 ];
 
 function formatNumber(num) {

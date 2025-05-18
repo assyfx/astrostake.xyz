@@ -124,7 +124,7 @@ async function updateStatusFromBackend() {
 // Fungsi untuk Animasi Block Number
 function animateBlockNumber(element, start, end) {
   if (end > start) {
-    const duration = 800; // Durasi animasi 0.8 detik
+    const duration = 1000; // Durasi animasi 0.8 detik
     const increment = (end - start) / (duration / 16);
     let current = start;
 
@@ -384,5 +384,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => {
     updateStatusFromBackend();
     updateBlockChart();
+	  sortCardsByBlock();
   }, 5000);
 });

@@ -12,7 +12,7 @@ const RPCS = [
   { name: "Komado", url: "https://0g-evmrpc-galileo.komado.xyz/", active: true, official: false },
   { name: "zskw", url: "https://0g.galileo.zskw.xyz/" },
   { name: "shachopra", url: "https://0g-galileo.shachopra.com/" },
-  { name: "CoreNoce Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/" }
+  { name: "CoreNode Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/" }
 ];
 
 function formatNumber(num) {
@@ -238,8 +238,8 @@ function updateBlockChart() {
   const data = [];
   const colors = [];
 
-  // Filter hanya untuk Chain ID 16601
-  cards.forEach(card => {
+  // Filter hanya untuk Chain ID 16601 (untuk chart)
+  const chartData = cards.map(card => {
     const chainText = card.querySelector('.status-chain').textContent;
     if (chainText.includes("16601")) {
       const title = card.querySelector('.status-title').textContent;
@@ -247,39 +247,68 @@ function updateBlockChart() {
       const m = txt.match(/Latest Block:\s*([\d,]+)/);
       const blockNumber = m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
 
-      if (blockNumber > 0) {
-        labels.push(title);
-        data.push(blockNumber);
-        colors.push('#4d61ff');
-      }
+      return { title, blockNumber, color: '#4d61ff' };
     }
-  });
+    return null;
+  }).filter(item => item !== null);
 
-  const validData = data.filter(b => b > 0);
-  const max = Math.max(...validData);
-  const minCandidate = Math.min(...validData);
-  const min = Math.max(minCandidate - 5, max - 50);
+  // Sort data berdasarkan blockNumber secara descending dan ambil 10 teratas untuk chart
+  const sortedData = [...chartData].sort((a, b) => b.blockNumber - a.blockNumber).slice(0, 10);
 
-  let filteredLabels = [];
-  let filteredData = [];
-  let filteredColors = [];
-
-  data.forEach((val, i) => {
-    const gap = max - val;
-
-    if (val === 0 || gap > 50) return;
-
-    filteredLabels.push(labels[i]);
-    filteredData.push(val);
-    filteredColors.push(gap > 1 ? '#facc15' : '#4d61ff');
-  });
+  // Mapping data ke chart
+  const filteredLabels = sortedData.map(item => item.title);
+  const filteredData = sortedData.map(item => item.blockNumber);
+  const filteredColors = sortedData.map(item => item.color);
 
   blockChart.data.labels = filteredLabels;
   blockChart.data.datasets[0].data = filteredData;
   blockChart.data.datasets[0].backgroundColor = filteredColors;
 
-  blockChart.options.scales.y.min = min === max ? max - 10 : min;
-  blockChart.options.scales.y.max = max + 10;
+  const max = Math.max(...filteredData);
+  const min = Math.min(...filteredData);
+
+  blockChart.options.scales.y.min = min - 5;
+  blockChart.options.scales.y.max = max + 5;
+
+  blockChart.update();
+}
+
+function updateBlockChartWithAnimation() {
+  const cards = Array.from(document.querySelectorAll('.status-card'));
+  const labels = [];
+  const data = [];
+  const colors = [];
+
+  const chartData = cards.map(card => {
+    const chainText = card.querySelector('.status-chain').textContent;
+    if (chainText.includes("16601")) {
+      const title = card.querySelector('.status-title').textContent;
+      const txt = card.querySelector('.status-block').textContent;
+      const m = txt.match(/Latest Block:\s*([\d,]+)/);
+      const blockNumber = m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
+
+      return { title, blockNumber, color: '#4d61ff' };
+    }
+    return null;
+  }).filter(item => item !== null);
+
+  const sortedData = [...chartData].sort((a, b) => b.blockNumber - a.blockNumber).slice(0, 10);
+
+  const filteredLabels = sortedData.map(item => item.title);
+  const filteredData = sortedData.map(item => item.blockNumber);
+  const filteredColors = sortedData.map(item => item.color);
+
+  blockChart.data.labels = filteredLabels;
+  blockChart.data.datasets[0].data = filteredData;
+  blockChart.data.datasets[0].backgroundColor = filteredColors;
+
+  blockChart.options.animation = { duration: 1000, easing: 'easeInOutQuart' };
+
+  const max = Math.max(...filteredData);
+  const min = Math.min(...filteredData);
+
+  blockChart.options.scales.y.min = min - 5;
+  blockChart.options.scales.y.max = max + 5;
 
   blockChart.update();
 }
@@ -322,8 +351,10 @@ function sortCardsByBlock() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const activeRPCs = RPCS.filter(rpc => rpc.active);
-  activeRPCs.forEach(rpc => {
+  const container = document.getElementById("team-rpc-container");
+  container.innerHTML = "";
+
+  RPCS.forEach(rpc => {
     const wrapper = document.createElement("div");
     wrapper.className = "status-card";
     wrapper.dataset.url = rpc.url;
@@ -347,14 +378,11 @@ document.addEventListener("DOMContentLoaded", () => {
     copyBtn.addEventListener("click", () => copyToClipboard(copyBtn, rpc.url));
   });
 
-  // 2) Chart
   initBlockChart();
+  updateBlockChart();
 
-  // 3) Ambil data dari backend pertama kali, lalu interval
-  updateStatusFromBackend();
   setInterval(() => {
     updateStatusFromBackend();
     updateBlockChart();
-    sortCardsByBlock();
   }, 5000);
 });

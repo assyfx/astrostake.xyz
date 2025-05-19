@@ -90,6 +90,155 @@ body {
     }
 }
 
+/* === BASE STYLES === */
+
+#list-rpc-container {
+  margin: 2rem auto;
+  max-width: 1600px;
+  overflow-x: auto;
+  padding: 0 1rem;
+}
+
+.rpc-list-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #1e1e24;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.rpc-list-table thead {
+  background: #2b2b33;
+}
+.rpc-list-table th {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ccc;
+  border-bottom: 1px solid #444;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.rpc-list-table td {
+  padding: 0.75rem 1rem;
+  color: #eee;
+  border-bottom: 1px solid #333;
+  white-space: nowrap;
+}
+
+.rpc-list-table tbody tr:nth-child(even) {
+  background: #1b1e25;
+}
+
+.rpc-list-table tbody tr:hover {
+  background: #2d2d36;
+}
+
+.rpc-list-table a {
+  color: #4ea8de;
+  text-decoration: none;
+}
+.rpc-list-table a:hover {
+  text-decoration: underline;
+}
+
+.status-cell .up   { color: #4cd137; font-weight: 600; }
+.status-cell .down { color: #e84118; font-weight: 600; }
+
+#btn-toggle-view {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  background: #3b3b98;
+  color: #fff;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#btn-toggle-view:hover {
+  background: #4b4bff;
+}
+
+/* Tutup BASE STYLES di sini */
+
+
+/* === RESPONSIVE: Tablet & Desktop Kecil === */
+@media (max-width: 1024px) {
+  #list-rpc-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  .rpc-list-table th,
+  .rpc-list-table td {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* === RESPONSIVE: Smartphone === */
+@media (max-width: 600px) {
+  /* sembunyikan kolom Network Height & Latency */
+  .rpc-list-table th:nth-child(4),
+  .rpc-list-table td:nth-child(4),
+  .rpc-list-table th:nth-child(5),
+  .rpc-list-table td:nth-child(5) {
+    display: none;
+  }
+
+  #list-rpc-container {
+    overflow-x: auto;
+    padding: 0 0.5rem;
+  }
+  .rpc-list-table th,
+  .rpc-list-table td {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Container tombol sort */
+.list-sort-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Gaya tombol sort */
+.sort-btn {
+  padding: 0.5rem 1rem;
+  background: #3b3b98;
+  color: #fff;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+/* Hover & active state */
+.sort-btn:hover {
+  background: #4b4bff;
+}
+.sort-btn:active {
+  transform: scale(0.97);
+}
+
+/* Indikator sort aktif */
+.sort-btn.active {
+  background: #2e86de;
+}
+
+/* Contoh cara toggle class .active di JS setelah render atau click */
+// document.getElementById('btn-sort-height').classList.add('active');
+// document.getElementById('btn-sort-latency').classList.remove('active');
+
+
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;

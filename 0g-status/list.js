@@ -44,6 +44,7 @@
     const tbody = table.querySelector('tbody');
     RPCS.forEach(rpc => {
       const tr = document.createElement('tr');
+      tr.classList.add("rpc-row");
       tr.innerHTML = `
         <td>${rpc.name}</td>
         <td><a href="${rpc.url}" target="_blank">${rpc.url}</a></td>
@@ -54,29 +55,21 @@
       tbody.appendChild(tr);
     });
 
-    // Event listener untuk tombol sort
+    // Tambahkan event listener untuk sort
     document.getElementById("btn-sort-height").addEventListener("click", () => {
-      // gunakan key 'height' sesuai class .height-cell
-      if (currentSort.key === 'height') {
-        currentSort.asc = !currentSort.asc;
-      } else {
-        currentSort.key = 'height';
-        currentSort.asc = false;
-      }
+      currentSort.key = "height";
+      currentSort.asc = !currentSort.asc;
       sortRows();
     });
+
     document.getElementById("btn-sort-latency").addEventListener("click", () => {
-      if (currentSort.key === 'latency') {
-        currentSort.asc = !currentSort.asc;
-      } else {
-        currentSort.key = 'latency';
-        currentSort.asc = false;
-      }
+      currentSort.key = "latency";
+      currentSort.asc = !currentSort.asc;
       sortRows();
     });
   }
 
-  // fungsi untuk mengurutkan baris sesuai kunci
+  // fungsi untuk mengurutkan baris dengan animasi
   function sortRows() {
     const tbody = document.querySelector("#list-rpc-container tbody");
     const rows = Array.from(tbody.querySelectorAll('tr'));
@@ -87,9 +80,23 @@
       const bText = b.querySelector(`.${currentSort.key}-cell`).textContent.replace(/,/g, '');
       const aVal = parseFloat(aText) || 0;
       const bVal = parseFloat(bText) || 0;
+
+      if (currentSort.key === 'latency') {
+        const aOffline = a.querySelector('.status-cell span').classList.contains('down') ? 1 : 0;
+        const bOffline = b.querySelector('.status-cell span').classList.contains('down') ? 1 : 0;
+        if (aOffline !== bOffline) return aOffline - bOffline;
+      }
+
       return currentSort.asc ? aVal - bVal : bVal - aVal;
     });
-    rows.forEach(r => tbody.appendChild(r));
+
+    // Tambahkan animasi saat urutkan ulang
+    tbody.style.transition = "opacity 0.3s";
+    tbody.style.opacity = 0.5;
+    setTimeout(() => {
+      rows.forEach(r => tbody.appendChild(r));
+      tbody.style.opacity = 1;
+    }, 200);
   }
 
   // fetch data dan update tabel
@@ -108,7 +115,7 @@
         // update network height dan latency
         row.querySelector(".height-cell").textContent = formatNumber(rpcData.block);
         row.querySelector(".latency-cell").textContent = Math.round(rpcData.latency);
-        
+
         // update status
         const span = row.querySelector(".status-cell span");
         const isOnline = rpcData.status === "Online";

@@ -9,7 +9,7 @@
   <title>Node Status - AstroStake</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/0g-status/style.css">
+  <link rel="stylesheet" href="style.css">
   <!-- Structured Data JSON-LD for SEO -->
   <script type="application/ld+json">
   {
@@ -99,7 +99,7 @@
         fetch('https://api64.ipify.org?format=json')
           .then(res => res.json())
           .then(data => {
-            fetch('https://api.astrostake.xyz/sendMessage', {
+            fetch('/sendMessage', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -132,7 +132,8 @@
   <div class="status-container" id="official-rpc-container"></div>
   
   <h3 style="text-align:center; margin-top:1rem;">🚀 Community RPCs</h3>
-  <div class="status-container" id="team-rpc-container"></div>
+    <button id="btn-toggle-view">List View</button>
+  <div class="status-container" id="team-rpc-container"></div><div id="list-rpc-container" style="display: none;"></div>
 
   <h3 style="text-align:center; margin-top:2rem;">
     Block Height Comparison
@@ -141,7 +142,7 @@
     <canvas id="blockChart"></canvas>
   </div>
   <p class="chart-note">
-    ⚠ This chart shows the top 10 RPCs by block height. If another RPC surpasses them, the chart will automatically reorder.
+    ⚠ Nodes that are more than 50 blocks behind will not appear in this chart.
   </p>
   <h3 style="text-align:center; margin-top:2rem;">Latency Graph (Real-time)</h3>
   <div class="chart-container">
@@ -151,8 +152,11 @@
   <!-- Dependencies & script status -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-  <script src="/0g-status/status.js"></script>
-  <script src="/0g-status/latency.js"></script>
+  <script src="card.js"></script>
+  <script src="latency.js"></script>
+  <script src="list.js"></script>
+  <script src="toggle.js"></script>
+  <script src="chart.js"></script>
   
 </body>
 <footer class="footer">
@@ -165,7 +169,7 @@
                 <h4>Navigation</h4>
                 <a href="https://astrostake.xyz/#services">Services</a>
                 <a href="https://docs.astrostake.xyz/">Guides</a>
-                <a href="https://astrostake.xyz/brand-kit">Brand Kit</a>
+                <a href="https://astrostake.xyz/brandkit">Brand Kit</a>
                 <a href="https://astrostake.xyz/#contact">Contact Us</a>
             </div>
             <div class="footer-legal">

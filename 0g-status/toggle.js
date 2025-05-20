@@ -1,32 +1,43 @@
 // toggle.js
 
-(function() {
-  // Ambil elemen tombol dan kontainer
+document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-toggle-view");
   const cardsContainer = document.getElementById("team-rpc-container");
   const listContainer = document.getElementById("list-rpc-container");
-
-  // Simpan nilai display default dari kontainer card (grid/flex/block)
+  // Capture original display style of cardsContainer
   const cardsDefaultDisplay = window.getComputedStyle(cardsContainer).display;
 
-  // Inisialisasi: pastikan card view tampil, list view tersembunyi, dan teks tombol tepat
-  listContainer.style.display = "none";
+  // Function to update button text and Freeze button visibility
+  function updateViewState() {
+    const listVisible = window.getComputedStyle(listContainer).display !== "none";
+    const freezeBtn = document.getElementById("freeze-btn");
+    if (listVisible) {
+      btn.textContent = "Card View";
+      if (freezeBtn) freezeBtn.style.display = "none";
+    } else {
+      btn.textContent = "List View";
+      if (freezeBtn) freezeBtn.style.display = "block";
+    }
+  }
+
+  // Initial setup: show cards, hide list
   cardsContainer.style.display = cardsDefaultDisplay;
-  btn.textContent = "List View";
+  listContainer.style.display = "none";
+  updateViewState();
 
+  // Toggle handler
   btn.addEventListener("click", () => {
-    const listIsVisible = listContainer.style.display === "block";
+    const listVisible = window.getComputedStyle(listContainer).display !== "none";
 
-    if (listIsVisible) {
-      // Kembali ke card view
+    if (listVisible) {
+      // Switch to cards
       listContainer.style.display = "none";
       cardsContainer.style.display = cardsDefaultDisplay;
-      btn.textContent = "List View";
     } else {
-      // Pindah ke list view
+      // Switch to list
       cardsContainer.style.display = "none";
       listContainer.style.display = "block";
-      btn.textContent = "Card View";
     }
+    updateViewState();
   });
-})();
+});

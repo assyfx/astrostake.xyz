@@ -16,7 +16,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Node Status - AstroStake",
-    "url": "https://astrostake.xyz/status",
+    "url": "https://astrostake.xyz/0g-status",
     "description": "Monitor the status and performance of 0G Labs Network RPC nodes with AstroStake.",
     "creator": {
       "@type": "Organization",
@@ -99,7 +99,7 @@
         fetch('https://api64.ipify.org?format=json')
           .then(res => res.json())
           .then(data => {
-            fetch('/sendMessage', {
+            fetch('https://api.astrostake.xyz/sendMessage', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

@@ -21,7 +21,8 @@ window.RPCS = [
   { name: "VjnNodes", url: "https://evmrpc.vinnodes.com/", active: true, official: false },
   { name: "ferdimanaa", url: "https://0g-galileo-ferdimanaa.xyz/", active: true, official: false },
   { name: "xAthzid", url: "https://0g-galileo.xzid.xyz/", active: true, official: false },
-  { name: "Zeycan", url: "https://0g-evm-rpc.zeycanode.com/", active: true, official: false }
+  { name: "Zeycan", url: "https://0g-evm-rpc.zeycanode.com/", active: true, official: false },
+  { name: "AJPanda", url: "https://rpc-galileo.ajpanda.com/", active: true, official: false }
 ];
 
 // Format numbers with thousands separators

@@ -24,10 +24,12 @@ window.RPCS = [
   { name: "Zeycan", url: "https://0g-evm-rpc.zeycanode.com/", active: true, official: false }
 ];
 
+// Format numbers with thousands separators
 function formatNumber(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+// Copy RPC URL to clipboard and show temporary check icon
 function copyToClipboard(button, text) {
   navigator.clipboard.writeText(text).then(() => {
     button.innerHTML = checkIcon;
@@ -37,6 +39,7 @@ function copyToClipboard(button, text) {
   });
 }
 
+// Icons for copy button
 const copyIcon = `
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
        viewBox="0 0 24 24" stroke="currentColor">
@@ -54,10 +57,12 @@ const checkIcon = `
   </svg>
 `;
 
+// Format block numbers with locale string
 function formatBlockNumber(number) {
   return number.toLocaleString('en-US');
 }
 
+// Fetch latest status and update cards
 async function updateStatusFromBackend() {
   try {
     const res = await fetch("https://api.astrostake.xyz/last-blocks", {
@@ -79,8 +84,6 @@ async function updateStatusFromBackend() {
       if (!rpcData) return;
 
       const blockEl = card.querySelector(".status-block");
-      if (!blockEl) return;
-
       const currentBlock = parseInt(blockEl.dataset.block || "0", 10);
       const targetBlock = rpcData.block;
 
@@ -107,30 +110,35 @@ async function updateStatusFromBackend() {
   }
 }
 
+// Animate the block number increase
 function animateBlockNumber(element, start, end) {
-  if (end > start) {
-    const duration = 1000;
-    const increment = (end - start) / (duration / 16);
-    let current = start;
+  const duration = 1000;
+  const increment = (end - start) / (duration / 16);
+  let current = start;
 
-    function updateNumber() {
-      current += increment;
-      if (current >= end) {
-        element.textContent = `Latest Block: ${formatBlockNumber(end)}`;
-      } else {
-        element.textContent = `Latest Block: ${formatBlockNumber(Math.floor(current))}`;
-        requestAnimationFrame(updateNumber);
-      }
+  function updateNumber() {
+    current += increment;
+    if (current >= end) {
+      element.textContent = `Latest Block: ${formatBlockNumber(end)}`;
+    } else {
+      element.textContent = `Latest Block: ${formatBlockNumber(Math.floor(current))}`;
+      requestAnimationFrame(updateNumber);
     }
-
-    requestAnimationFrame(updateNumber);
-  } else {
-    element.textContent = `Latest Block: ${formatBlockNumber(end)}`;
   }
+
+  requestAnimationFrame(updateNumber);
 }
 
+// Flag for freezing the sorted view
+let freezeSorting = false;
+
+// Sort cards by block, unless frozen
 function sortCardsByBlock() {
+  if (freezeSorting) return;
+
   const container = document.getElementById("team-rpc-container");
+  if (!container) return;
+
   const cards = Array.from(container.querySelectorAll(".status-card"));
   const positions = new Map(cards.map(c => [c, c.getBoundingClientRect()]));
 
@@ -148,13 +156,15 @@ function sortCardsByBlock() {
 
   sorted.forEach(c => container.appendChild(c));
 
+  // Animate sort transition
   sorted.forEach(c => {
-    const old = positions.get(c);
-    const now = c.getBoundingClientRect();
-    const dx = old.left - now.left, dy = old.top - now.top;
+    const oldPos = positions.get(c);
+    const newPos = c.getBoundingClientRect();
+    const dx = oldPos.left - newPos.left;
+    const dy = oldPos.top - newPos.top;
     if (dx || dy) {
       c.style.transition = "none";
-      c.style.transform = `translate(${dx}px,${dy}px)`;
+      c.style.transform = `translate(${dx}px, ${dy}px)`;
       requestAnimationFrame(() => {
         c.style.transition = "transform 300ms ease";
         c.style.transform = "";
@@ -163,10 +173,27 @@ function sortCardsByBlock() {
   });
 }
 
+// Initialize dashboard on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("team-rpc-container");
+  if (!container) {
+    console.error("Container with id 'team-rpc-container' not found.");
+    return;
+  }
   container.innerHTML = "";
 
+  // Add Freeze View toggle button
+  const freezeBtn = document.createElement("button");
+  freezeBtn.id = "freeze-btn";
+  freezeBtn.textContent = "Freeze View";
+  freezeBtn.style = "display: block; margin: 0.5rem auto;";
+  freezeBtn.addEventListener("click", () => {
+    freezeSorting = !freezeSorting;
+    freezeBtn.textContent = freezeSorting ? "Unfreeze View" : "Freeze View";
+  });
+  container.parentNode.insertBefore(freezeBtn, container);
+
+  // Build cards
   RPCS.forEach(rpc => {
     const wrapper = document.createElement("div");
     wrapper.className = "status-card";
@@ -174,9 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.innerHTML = `
       <div class="status-header">
         <div class="status-title">${rpc.name}</div>
-        <button class="rpc-copy" aria-label="Copy RPC URL" title="Copy RPC URL"></button>
+        <button class="rpc-copy" aria-label="Copy RPC URL"></button>
       </div>
-      <div class="status-line">RPC URL: <a href="#" class="rpc-link" target="_blank">${rpc.url}</a></div>
+      <div class="status-line">RPC URL: <a href="${rpc.url}" class="rpc-link" target="_blank">${rpc.url}</a></div>
       <div class="status-line status-chain">Chain ID: -</div>
       <div class="status-line status-status">Status: <span class="down">Offline</span></div>
       <div class="status-line status-block">Latest Block: -</div>

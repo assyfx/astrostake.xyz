@@ -15,8 +15,6 @@ window.RPCS = [
   { name: "zskw", url: "https://0g.galileo.zskw.xyz/", active: true, official: false },
   { name: "shachopra", url: "https://0g-galileo.shachopra.com/", active: true, official: false },
   { name: "CoreNode Community 2", url: "https://0g-galileo-evmrpc2.corenodehq.xyz/", active: true, official: false },
-  { name: "wukongz", url: "http://wukongz.duckdns.org:8545/", active: true, official: false },
-  { name: "skyxyz", url: "https://0g-evm.skyxyz.com/", active: true, official: false },
   { name: "Validator247", url: "http://0g-galileo-evm-rpc.validator247.com/", active: true, official: false },
   { name: "VjnNodes", url: "https://evmrpc.vinnodes.com/", active: true, official: false },
   { name: "ferdimanaa", url: "https://0g-galileo-ferdimanaa.xyz/", active: true, official: false },
@@ -25,7 +23,8 @@ window.RPCS = [
   { name: "AJPanda", url: "https://rpc-galileo.ajpanda.com/", active: true, official: false },
   { name: "Obiwankenobi", url: "https://evm-rpc-0g.obiwank107.xyz/", active: true, official: false },
   { name: "Langitz", url: "https://0g-galileo.langitz.xyz/", active: true, official: false },
-  { name: "Sr20de", url: "https://0g-evmrpc.sr20de.xyz/", active: true, official: false }
+  { name: "Sr20de", url: "https://0g-evmrpc.sr20de.xyz/", active: true, official: false },
+  { name: "Shayneval", url: "https://evm-rpc-shayneval.xyz/", active: true, official: false }
 ];
 
 // Format numbers with thousands separators

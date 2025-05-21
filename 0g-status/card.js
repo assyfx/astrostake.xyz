@@ -22,7 +22,10 @@ window.RPCS = [
   { name: "ferdimanaa", url: "https://0g-galileo-ferdimanaa.xyz/", active: true, official: false },
   { name: "xAthzid", url: "https://0g-galileo.xzid.xyz/", active: true, official: false },
   { name: "Zeycan", url: "https://0g-evm-rpc.zeycanode.com/", active: true, official: false },
-  { name: "AJPanda", url: "https://rpc-galileo.ajpanda.com/", active: true, official: false }
+  { name: "AJPanda", url: "https://rpc-galileo.ajpanda.com/", active: true, official: false },
+  { name: "Obiwankenobi", url: "https://evm-rpc-0g.obiwank107.xyz/", active: true, official: false },
+  { name: "Langitz", url: "https://0g-galileo.langitz.xyz/", active: true, official: false },
+  { name: "Sr20de", url: "https://0g-evmrpc.sr20de.xyz/", active: true, official: false }
 ];
 
 // Format numbers with thousands separators

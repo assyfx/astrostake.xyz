@@ -37,6 +37,13 @@
             text-decoration: underline;
         }
 		
+#last-updated {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
 /* Navbar Utama */
 .navbar {
     width: 100%;
